@@ -22,21 +22,5 @@ function changeTone(op) {
 
 <style scoped>
 
-input {
-  text-align: center;
-  width: 100px;
-  font-size: 1.2rem;
-}
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  color: #F2F2F2;
-  background-color: rgb(47, 47, 47);
-  border-radius: 5px;
-}
-
 </style>
 

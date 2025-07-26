@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <ToneSwitcher />
+    <OctaveSwitcher />
   </div>
   
 </template>
@@ -10,6 +11,7 @@ import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 
 const { currentTone } = storeToRefs(useControlStore())
+
 
 
 </script>
