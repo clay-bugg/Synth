@@ -2,6 +2,7 @@
   <div class="app">
     <ToneSwitcher />
     <OctaveSwitcher />
+    <LabelsSwitcher />
   </div>
   
 </template>
