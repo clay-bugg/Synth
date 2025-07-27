@@ -4,7 +4,7 @@
     <div class="metronome-controls">
       <div class="metronome-controls-1">
         <input v-model="currentBPM" />
-        <button>TAP</button>
+        <button @click="handleTap">TAP</button>
       </div>
       <div class="metronome-controls-2">
         <div class="leds">
@@ -29,15 +29,13 @@
 <script setup>
 //Imports
 import { ref } from 'vue'
-import {Howl, Howler} from 'howler'
+import { Howl, Howler } from 'howler'
 
-//Store Variables
+//Metronome
 const { currentBPM } = storeToRefs(useControlStore())
-
-//Variables
 const currentBeat = ref(0)
+const tapTimes = ref([])
 let interval = null
-
 
 function startMetronome(bpm) {
   clearInterval(interval)
@@ -47,26 +45,37 @@ function startMetronome(bpm) {
     playClick(currentBeat.value)
   }, msPerBeat)
 }
-
 function stopMetronome() {
   clearInterval(interval)
   currentBeat.value = 0
 }
-
-function playClick(beat) { 
+function playClick(beat) {
   beat === 0 ? clickHigh.play() : clickLow.play()
 }
+function handleTap() {
+  const now = Date.now()
+  tapTimes.value.push(now)
 
+  if (tapTimes.value.length > 4) tapTimes.value.shift()
+  if (tapTimes.value.length >= 2) {
+    const intervals = []
+    for (let i = 1; i < tapTimes.value.length; i++) {
+      intervals.push(tapTimes.value[i] - tapTimes.value[i - 1])
+    }
+    const avgInterval = intervals.reduce((a, b) => a + b) / intervals.length
+    const bpm = Math.round(60000 / avgInterval)
+    currentBPM.value = bpm
+  }
+}
+//Howler.js
 const clickHigh = new Howl({
   src: ['/samples/metronome/clickhigh.wav'],
   onload: () => console.log('Click High loaded'),
 })
-
 const clickLow = new Howl({
   src: ['/samples/metronome/clicklow.wav'],
   onload: () => console.log('Click Low loaded'),
 })
-
 </script>
 
 <style scoped>
@@ -123,6 +132,14 @@ h6 {
 .led.active {
   background-color: #00ff00;
   box-shadow: 0 0 2px #00ff00;
+}
+.metronome-controls-1 button {
+  width: 28px;
+  height: 22px;
+  border: 0.5px solid black;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.7rem;
 }
 .metronome-controls-2 button {
   width: 26px;
