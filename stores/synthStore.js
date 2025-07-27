@@ -6,11 +6,13 @@ export const useSynthStore = defineStore("synth", () => {
   const currentRelease = ref(null);
   const currentSustain = ref(null);
   const currentDecay = ref(null);
+  const currentBeat = ref(1)
 
   return {
     currentAttack,
     currentRelease,
     currentDecay,
     currentSustain,
+    currentBeat,
   };
 });

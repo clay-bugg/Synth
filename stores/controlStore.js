@@ -13,5 +13,6 @@ export const useControlStore = defineStore('control', () => {
     currentStartingOctave,
     currentLabels,
     currentVolume,
+    currentBPM,
   }
 })

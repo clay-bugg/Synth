@@ -24,6 +24,7 @@
 import { ref } from 'vue'
 
 const { currentBPM } = storeToRefs(useControlStore())
+const { currentBeat } = storeToRefs(useSynthStore())
 </script>
 
 <style scoped>
@@ -70,10 +71,12 @@ h6 {
   width: fit-content;
 }
 .led {
-  width: 20px;
-  height: 20px;
-  border: 0.2px solid black;
+  width: 16px;
+  height: 16px;
   border-radius: 50px;
-  background-color: rgb(242, 242, 242);
+  background-color: rgb(215, 215, 215);
+}
+.led.active {
+  background-color: rgb(94, 157, 13);
 }
 </style>
