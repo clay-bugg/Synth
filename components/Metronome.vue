@@ -24,7 +24,19 @@
 import { ref } from 'vue'
 
 const { currentBPM } = storeToRefs(useControlStore())
-const { currentBeat } = storeToRefs(useSynthStore())
+const currentBeat = ref(0)
+let interval
+
+function startMetronome() { 
+  const bpm = currentBPM.value
+  clearInterval(interval)
+  const msPerBeat = 60000 / bpm
+  interval = setInterval(() => { 
+    currentBeat.value = (currentBeat.value + 1) % 4
+  }, msPerBeat)
+}
+
+
 </script>
 
 <style scoped>
@@ -75,8 +87,10 @@ h6 {
   height: 16px;
   border-radius: 50px;
   background-color: rgb(215, 215, 215);
+ transition: background-color 0.1s ease;
 }
 .led.active {
-  background-color: rgb(94, 157, 13);
+  background-color: #00ff00;
+  box-shadow: 0 0 2px #00ff00;
 }
 </style>
