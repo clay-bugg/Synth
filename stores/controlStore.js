@@ -6,6 +6,7 @@ export const useControlStore = defineStore('control', () => {
   const currentStartingOctave = ref(3)
   const currentLabels = ref('All')
   const currentVolume = ref(80)
+  const currentBPM = ref(80)
 
   return {
     currentTone,

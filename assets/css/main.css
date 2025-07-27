@@ -18,6 +18,9 @@ ol {
 input,
 button {
   font-style: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /*---Classes---*/
 .control-switch {
@@ -31,9 +34,6 @@ button {
   font-size: 1.2rem;
 }
 .control-switch button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 24px;
   height: 24px;
   color: #F2F2F2;
