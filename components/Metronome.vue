@@ -16,10 +16,10 @@
           ></div>
         </div>
         <button @click="startMetronome(currentBPM)">
-          <Icon class="button-icon" name="solar:play-bold" />
+          <Icon class="button-icon" name="fluent:play-28-filled" />
         </button>
         <button @click="stopMetronome">
-          <Icon class="button-icon" name="material-symbols:stop-rounded" />
+          <Icon class="button-icon" name="mage:stop-fill" />
         </button>
       </div>
     </div>
@@ -129,5 +129,9 @@ h6 {
   height: 26px;
   border: 0.5px solid black;
   border-radius: 4px;
+}
+.button-icon {
+  width: 16px;
+  height: 16px;
 }
 </style>
