@@ -15,27 +15,57 @@
             :class="{ active: currentBeat === led - 1 }"
           ></div>
         </div>
+        <button @click="startMetronome(currentBPM)">
+          <Icon class="button-icon" name="solar:play-bold" />
+        </button>
+        <button @click="stopMetronome">
+          <Icon class="button-icon" name="material-symbols:stop-rounded" />
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+//Imports
 import { ref } from 'vue'
+import {Howl, Howler} from 'howler'
 
+//Store Variables
 const { currentBPM } = storeToRefs(useControlStore())
-const currentBeat = ref(0)
-let interval
 
-function startMetronome() { 
-  const bpm = currentBPM.value
+//Variables
+const currentBeat = ref(0)
+let interval = null
+
+
+function startMetronome(bpm) {
   clearInterval(interval)
   const msPerBeat = 60000 / bpm
-  interval = setInterval(() => { 
+  interval = setInterval(() => {
     currentBeat.value = (currentBeat.value + 1) % 4
+    playClick(currentBeat.value)
   }, msPerBeat)
 }
 
+function stopMetronome() {
+  clearInterval(interval)
+  currentBeat.value = 0
+}
+
+function playClick(beat) { 
+  beat === 0 ? clickHigh.play() : clickLow.play()
+}
+
+const clickHigh = new Howl({
+  src: ['/samples/metronome/clickhigh.wav'],
+  onload: () => console.log('Click High loaded'),
+})
+
+const clickLow = new Howl({
+  src: ['/samples/metronome/clicklow.wav'],
+  onload: () => console.log('Click Low loaded'),
+})
 
 </script>
 
@@ -58,7 +88,8 @@ h6 {
   border: 1px solid black;
   padding: 10px 15px;
 }
-.metronome-controls-1 {
+.metronome-controls-1,
+.metronome-controls-2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -87,10 +118,16 @@ h6 {
   height: 16px;
   border-radius: 50px;
   background-color: rgb(215, 215, 215);
- transition: background-color 0.1s ease;
+  transition: background-color 0.1s ease;
 }
 .led.active {
   background-color: #00ff00;
   box-shadow: 0 0 2px #00ff00;
+}
+.metronome-controls-2 button {
+  width: 26px;
+  height: 26px;
+  border: 0.5px solid black;
+  border-radius: 4px;
 }
 </style>
