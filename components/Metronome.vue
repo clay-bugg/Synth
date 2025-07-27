@@ -15,12 +15,14 @@
             :class="{ active: currentBeat === led - 1 }"
           ></div>
         </div>
-        <button @click="startMetronome(currentBPM)">
-          <Icon class="button-icon" name="fluent:play-28-filled" />
-        </button>
-        <button @click="stopMetronome">
-          <Icon class="button-icon" name="mage:stop-fill" />
-        </button>
+        <div class="metronome-playback-buttons">
+          <button @click="startMetronome(currentBPM)">
+            <Icon class="button-icon" name="fluent:play-28-filled" />
+          </button>
+          <button @click="stopMetronome">
+            <Icon class="button-icon" name="mage:stop-fill" />
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -101,13 +103,15 @@ h6 {
 .metronome-controls-2 {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 5px;
-  width: 100%;
+  width: fit-content;
   height: 26px;
 }
-.bpm-input input {
+.metronome-controls-1 input {
   height: 100%;
+  width: 40px;
+  text-align: center;
 }
 .bpm-input button {
   width: 26px;
@@ -141,7 +145,14 @@ h6 {
   font-weight: 700;
   font-size: 0.7rem;
 }
-.metronome-controls-2 button {
+.metronome-playback-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+  width: fit-content;
+}
+.metronome-playback-buttons button {
   width: 26px;
   height: 26px;
   border: 0.5px solid black;

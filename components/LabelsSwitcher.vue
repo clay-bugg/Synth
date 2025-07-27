@@ -7,9 +7,11 @@
 </template>
 
 <script setup>
+//Imports
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 
+//Change Labels
 const { currentLabels } = storeToRefs(useControlStore())
 
 function changeLabels(op) {
