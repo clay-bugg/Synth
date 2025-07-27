@@ -16,11 +16,9 @@ function changeTone(op) {
   const tones = ['sine', 'sawtooth', 'square', 'triangle']
   const index = tones.indexOf(currentTone.value)
   if (op === '+') currentTone.value = tones[(index + 1) % tones.length]
-  if (op === '-') currentTone.value = tones[(index - 1 + tones.length) % tones.length] 
+  if (op === '-')
+    currentTone.value = tones[(index - 1 + tones.length) % tones.length]
 }
 </script>
 
-<style scoped>
-
-</style>
-
+<style scoped></style>

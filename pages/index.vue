@@ -1,17 +1,12 @@
 <template>
   <div class="app">
-  <VolumeSlider />
+    <VolumeSlider />
+    <WaveformControls />
   </div>
-  
 </template>
 
 <script setup>
 import { ref } from 'vue'
-
-
-
-
-
 </script>
 
 <style scoped>
@@ -30,6 +25,5 @@ body {
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  }
-
+}
 </style>

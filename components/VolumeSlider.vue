@@ -9,8 +9,6 @@
 import { ref } from 'vue'
 
 const { currentVolume } = storeToRefs(useControlStore())
-
-
 </script>
 
 <style scoped>
@@ -21,6 +19,6 @@ const { currentVolume } = storeToRefs(useControlStore())
   gap: 60px;
 }
 input {
-  transform: rotate(-90deg)
+  transform: rotate(-90deg);
 }
 </style>

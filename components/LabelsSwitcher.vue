@@ -16,10 +16,9 @@ function changeLabels(op) {
   const labels = ['All', 'Chord', 'None']
   const index = labels.indexOf(currentLabels.value)
   if (op === '+') currentLabels.value = labels[(index + 1) % labels.length]
-  if (op === '-') currentLabels.value = labels[(index - 1 + labels.length) % labels.length] 
+  if (op === '-')
+    currentLabels.value = labels[(index - 1 + labels.length) % labels.length]
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

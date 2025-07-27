@@ -11,14 +11,19 @@ import { ref } from 'vue'
 
 const { currentStartingOctave } = storeToRefs(useControlStore())
 const octavesDisplayed = ref('3-4')
-function changeOctaves(op) { 
+function changeOctaves(op) {
   const octaves = ['1', '2', '3', '4', '5']
   const index = octaves.indexOf(currentStartingOctave.value.toString())
-  if (op === '+') currentStartingOctave.value = Number(octaves[(index + 1) % octaves.length])
-  if (op === '-') currentStartingOctave.value = Number(octaves[(index - 1 + octaves.length) % octaves.length])
-  octavesDisplayed.value = `${currentStartingOctave.value}-${currentStartingOctave.value + 1}`
+  if (op === '+')
+    currentStartingOctave.value = Number(octaves[(index + 1) % octaves.length])
+  if (op === '-')
+    currentStartingOctave.value = Number(
+      octaves[(index - 1 + octaves.length) % octaves.length]
+    )
+  octavesDisplayed.value = `${currentStartingOctave.value}-${
+    currentStartingOctave.value + 1
+  }`
 }
-
 </script>
 
 <style scoped></style>
