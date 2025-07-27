@@ -1,5 +1,6 @@
 <template>
   <div class="volume-slider">
+    <p>Vol</p>
     <input v-model="currentVolume" type="range" :min="0" :max="100" />
     <p>{{ currentVolume }}</p>
   </div>
