@@ -1,8 +1,15 @@
 <template>
-  <div class="labels-switch control-switch">
-    <button @click="changeLabels('-')">-</button>
+  <div class="label-switcher switcher">
+    <div class="labels-switch control-switch">
+      <button @click="changeLabels('-')">
+        <img src="/icons/arrow-left.png" />
+      </button>
+      <p>Labels</p>
+      <button @click="changeLabels('+')">
+        <img src="/icons/arrow-right.png" />
+      </button>
+    </div>
     <input v-model="currentLabels" />
-    <button @click="changeLabels('+')">+</button>
   </div>
 </template>
 
@@ -23,4 +30,20 @@ function changeLabels(op) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.label-switcher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+button {
+  width: 24px;
+  height: 24px;
+}
+button img {
+  width: 100%;
+  height: 100%;
+}
+</style>

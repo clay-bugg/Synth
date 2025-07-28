@@ -1,8 +1,15 @@
 <template>
-  <div class="octave-switch control-switch">
-    <button @click="changeOctaves('-')">-</button>
+  <div class="octave-switcher switcher">
+    <div class="octave-switch control-switch">
+      <button @click="changeOctaves('-')">
+        <img src="/icons/arrow-left.png" />
+      </button>
+      <p>Octaves</p>
+      <button @click="changeOctaves('+')">
+        <img src="/icons/arrow-right.png" />
+      </button>
+    </div>
     <input v-model="octavesDisplayed" />
-    <button @click="changeOctaves('+')">+</button>
   </div>
 </template>
 
@@ -10,6 +17,7 @@
 import { ref } from 'vue'
 
 const { currentStartingOctave } = storeToRefs(useControlStore())
+
 const octavesDisplayed = ref('3-4')
 function changeOctaves(op) {
   const octaves = ['1', '2', '3', '4', '5']
@@ -26,4 +34,20 @@ function changeOctaves(op) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.octave-switcher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+button {
+  width: 24px;
+  height: 24px;
+}
+button img {
+  width: 100%;
+  height: 100%;
+}
+</style>
