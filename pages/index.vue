@@ -65,4 +65,7 @@ body {
 .volume {
   grid-area: volume;
 }
+.keys {
+  grid-area: keys;
+}
 </style>

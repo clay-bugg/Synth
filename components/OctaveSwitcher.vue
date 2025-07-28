@@ -16,9 +16,8 @@
 <script setup>
 import { ref } from 'vue'
 
-const { currentStartingOctave } = storeToRefs(useControlStore())
+const { currentStartingOctave, octavesDisplayed } = storeToRefs(useControlStore())
 
-const octavesDisplayed = ref('3-4')
 function changeOctaves(op) {
   const octaves = ['1', '2', '3', '4', '5']
   const index = octaves.indexOf(currentStartingOctave.value.toString())

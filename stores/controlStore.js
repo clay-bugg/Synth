@@ -7,6 +7,7 @@ export const useControlStore = defineStore('control', () => {
   const currentLabels = ref('All')
   const currentVolume = ref(80)
   const currentBPM = ref(80)
+  const octavesDisplayed = ref('3-4')
 
   return {
     currentTone,
@@ -14,5 +15,6 @@ export const useControlStore = defineStore('control', () => {
     currentLabels,
     currentVolume,
     currentBPM,
+    octavesDisplayed,
   }
 })
